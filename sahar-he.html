@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הוולנטיין של שחר 🧸</title>
+    <link rel="stylesheet" href="sahar-he.css">
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="card" id="page1">
+        <div class="teddies">🧸💖🧸</div>
+        <h1>שחר, האם תהיי הוולנטיין שלי?</h1>
+
+        <div class="buttons">
+            <button class="yes" onclick="goToYay()">כן 💕</button>
+            <button class="no" id="noBtn">לא</button>
+        </div>
+    </div>
+
+    <!-- Page 2 (Hidden initially) -->
+    <div class="card hidden" id="page2">
+        <h1>יששש!!! 🎉💖</h1>
+        <p>"אוהב אותך עד השמיים ומאוהב לך בתחת-עומר אדם" 🧸</p>
+
+        <div class="photo-box">
+            <img src="teddy.jpg" alt="Valentine photo" style="max-width: 250px; height: auto;">
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+
+        noBtn.addEventListener("mouseover", () => {
+            // Move the button randomly within a small range (same effect as original)
+            noBtn.style.left = Math.random() * 220 + "px";
+            noBtn.style.top = Math.random() * 90 + "px";
+        });
+
+        function goToYay() {
+            document.getElementById("page1").classList.add("hidden");
+            document.getElementById("page2").classList.remove("hidden");
+            createHearts();
+        }
+
+        function createHearts() {
+            const heartCount = 70;
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.classList.add('heart-pop');
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s"; 
+                heart.style.fontSize = Math.random() * 20 + 20 + "px";
+                document.body.appendChild(heart);
+
+                setTimeout(() => { heart.remove(); }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
